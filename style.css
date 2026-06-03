@@ -1,0 +1,48 @@
+
+html, body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background: rgb(8, 8, 8);
+  font-family: 'Roboto';
+}
+canvas {
+  width:100%;
+}
+
+.canvas-banner {
+  background: rgb(25, 25, 25);
+  padding: 5vh 20vw;
+}
+
+.nav-bg {
+  background: url(./sprites/sky.png),
+              linear-gradient(90deg ,rgb(103, 0, 0), black);
+  background-blend-mode:color-dodge;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nav {
+  backdrop-filter: blur(7px);
+  text-align: center;
+  padding: 0.01rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav h1 {
+    color: white;
+    font-weight: 100;
+    font-optical-sizing: auto;
+}
+
+.nav-icon img {
+  height: 4rem;
+}
+
