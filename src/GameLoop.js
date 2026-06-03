@@ -1,48 +1,45 @@
 export class GameLoop {
-    constructor(update, render) {
-        this.lastFrameTime = 0;
-        this.accumulatedTime = 0;
-        this.timeStep = 1000/60;
-        
-        this.update = update;
-        this.render = render;
+  constructor(update, render) {
+    this.lastFrameTime = 0;
+    this.accumulatedTime = 0;
+    this.timeStep = 1000 / 60;
 
-        this.rafId = null;
-        this.isRunning = false;
+    this.update = update;
+    this.render = render;
+
+    this.rafId = null;
+    this.isRunning = false;
+  }
+
+  mainLoop = (timestamp) => {
+    if (!this.isRunning) return;
+
+    let deltaTime = timestamp - this.lastFrameTime;
+    this.lastFrameTime = timestamp;
+
+    this.accumulatedTime += deltaTime;
+
+    while (this.accumulatedTime >= this.timeStep) {
+      this.update(this.timeStep);
+      this.accumulatedTime -= this.timeStep;
     }
 
-    mainLoop = (timestamp) => {
-        if (!this.isRunning) return;
+    this.render();
 
-        let deltaTime = timestamp - this.lastFrameTime;
-        this.lastFrameTime = timestamp;
+    this.rafId = requestAnimationFrame(this.mainLoop);
+  };
 
-
-        this.accumulatedTime += deltaTime;
-
-
-        while (this.accumulatedTime >= this.timeStep) {
-            this.update(this.timeStep);
-            this.accumulatedTime -= this.timeStep;
-        }
-
-
-        this.render();
-
-        this.rafId = requestAnimationFrame(this.mainLoop);
+  start() {
+    if (!this.isRunning) {
+      this.isRunning = true;
+      this.rafId = requestAnimationFrame(this.mainLoop);
     }
+  }
 
-    start() {
-        if (!this.isRunning) {
-            this.isRunning = true;
-            this.rafId = requestAnimationFrame(this.mainLoop);
-        }
+  stop() {
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
     }
-
-    stop() {
-        if (this.rafId) {
-            cancelAnimationFrame(this.rafId);
-        }
-        this.isRunning = false;
-    }
+    this.isRunning = false;
+  }
 }

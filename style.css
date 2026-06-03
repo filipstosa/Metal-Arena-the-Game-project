@@ -1,13 +1,13 @@
-
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
   overflow: hidden;
   background: rgb(8, 8, 8);
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 canvas {
-  width:100%;
+  width: 100%;
 }
 
 .canvas-banner {
@@ -16,9 +16,9 @@ canvas {
 }
 
 .nav-bg {
-  background: url(./sprites/sky.png),
-              linear-gradient(90deg ,rgb(103, 0, 0), black);
-  background-blend-mode:color-dodge;
+  background:
+    url(./sprites/sky.png), linear-gradient(90deg, rgb(103, 0, 0), black);
+  background-blend-mode: color-dodge;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -37,12 +37,11 @@ canvas {
 }
 
 .nav h1 {
-    color: white;
-    font-weight: 100;
-    font-optical-sizing: auto;
+  color: white;
+  font-weight: 100;
+  font-optical-sizing: auto;
 }
 
 .nav-icon img {
   height: 4rem;
 }
-
